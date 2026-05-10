@@ -1,9 +1,287 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Kerala Lottery</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lottery Booking Website</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0d1020;
+color:white;
+padding:20px;
+}
+
+.container{
+max-width:500px;
+margin:auto;
+background:#161b2e;
+padding:20px;
+border-radius:15px;
+box-shadow:0 0 20px rgba(255,215,0,0.2);
+}
+
+h1{
+text-align:center;
+color:gold;
+margin-bottom:20px;
+}
+
+.prize{
+background:#222;
+padding:15px;
+border-radius:10px;
+text-align:center;
+margin-bottom:20px;
+border:1px solid gold;
+}
+
+.prize h2{
+font-size:35px;
+color:gold;
+}
+
+.ticket-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-top:15px;
+}
+
+.ticket{
+background:#1f2940;
+padding:12px;
+border-radius:10px;
+text-align:center;
+cursor:pointer;
+border:1px solid rgba(255,255,255,0.1);
+transition:0.3s;
+}
+
+.ticket:hover{
+transform:scale(1.05);
+border-color:gold;
+}
+
+.ticket.selected{
+background:gold;
+color:black;
+font-weight:bold;
+}
+
+.summary{
+margin-top:20px;
+background:#20283f;
+padding:15px;
+border-radius:10px;
+}
+
+.summary p{
+margin:8px 0;
+}
+
+input{
+width:100%;
+padding:14px;
+margin-top:15px;
+border:none;
+border-radius:10px;
+font-size:16px;
+outline:none;
+}
+
+button{
+width:100%;
+padding:16px;
+margin-top:15px;
+border:none;
+border-radius:10px;
+background:#25D366;
+color:white;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.03);
+}
+
+.timer{
+text-align:center;
+margin:20px 0;
+font-size:25px;
+font-weight:bold;
+color:gold;
+}
+</style>
 </head>
+
 <body>
-<h1>Website Working ✅</h1>
+
+<div class="container">
+
+<h1>KERALA LOTTERY</h1>
+
+<div class="prize">
+<p>FIRST PRIZE</p>
+<h2>₹25 CRORE</h2>
+</div>
+
+<div class="timer">
+⏳ Time Left: <span id="timer">15:00</span>
+</div>
+
+<h3>Select Tickets</h3>
+
+<div class="ticket-grid" id="ticketGrid"></div>
+
+<div class="summary">
+<p>Selected Tickets: <span id="count">0</span></p>
+<p>Total Amount: ₹<span id="total">0</span></p>
+</div>
+
+<input type="text" id="number" placeholder="Enter WhatsApp Number">
+
+<button onclick="submitBooking()">
+BOOK NOW ON WHATSAPP
+</button>
+
+</div>
+
+<script>
+
+const tickets = [
+"KL1001","KL1002","KL1003",
+"KL1004","KL1005","KL1006",
+"KL1007","KL1008","KL1009",
+"KL1010","KL1011","KL1012"
+];
+
+const price = 40;
+const whatsapp = "919360457290";
+
+let selected = [];
+
+const grid = document.getElementById("ticketGrid");
+
+tickets.forEach(ticket => {
+
+const div = document.createElement("div");
+
+div.className = "ticket";
+
+div.innerText = ticket;
+
+div.onclick = () => {
+
+if(selected.includes(ticket)){
+
+selected = selected.filter(t => t !== ticket);
+
+div.classList.remove("selected");
+
+}else{
+
+selected.push(ticket);
+
+div.classList.add("selected");
+
+}
+
+updateSummary();
+
+};
+
+grid.appendChild(div);
+
+});
+
+function updateSummary(){
+
+document.getElementById("count").innerText = selected.length;
+
+document.getElementById("total").innerText = selected.length * price;
+
+}
+
+function submitBooking(){
+
+const number = document.getElementById("number").value;
+
+if(selected.length < 3){
+
+alert("Minimum 3 tickets select karo");
+
+return;
+
+}
+
+if(number.length < 10){
+
+alert("Valid WhatsApp number dalo");
+
+return;
+
+}
+
+const msg = `
+KERALA LOTTERY BOOKING
+
+Customer Number: ${number}
+
+Selected Tickets:
+${selected.join(", ")}
+
+Total Amount: ₹${selected.length * price}
+`;
+
+window.open(
+`https://wa.me/${whatsapp}?text=${encodeURIComponent(msg)}`,
+'_blank'
+);
+
+}
+
+let totalSeconds = 15 * 60;
+
+function startTimer(){
+
+const timer = document.getElementById("timer");
+
+setInterval(() => {
+
+let minutes = Math.floor(totalSeconds / 60);
+
+let seconds = totalSeconds % 60;
+
+timer.innerText =
+String(minutes).padStart(2,'0')
++ ":" +
+String(seconds).padStart(2,'0');
+
+if(totalSeconds > 0){
+totalSeconds--;
+}else{
+totalSeconds = 15 * 60;
+}
+
+},1000);
+
+}
+
+startTimer();
+
+</script>
+
 </body>
 </html>
