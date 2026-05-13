@@ -2,394 +2,539 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kerala Government Lottery – Official</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Rajdhani:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Kerala Lottery</title>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --gold: #FFD700; --gold2: #FFA500; --deep: #0a0a1a; --dark: #0d1428;
-    --card: #111827; --red: #e53935; --green: #00c853; --white: #ffffff;
-    --muted: rgba(255,255,255,0.65);
-  }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Rajdhani', 'Noto Sans Devanagari', sans-serif;
-    background: var(--deep); color: var(--white); min-height: 100vh; overflow-x: hidden;
-  }
-  #stars {
-    position: fixed; inset: 0; z-index: 0; pointer-events: none;
-    background: radial-gradient(ellipse at 20% 30%, #1a1040 0%, #0a0a1a 60%);
-  }
-  #stars::before, #stars::after {
-    content: ''; position: absolute; inset: 0;
-    background-image:
-      radial-gradient(1px 1px at 10% 20%, rgba(255,255,200,0.8) 0%, transparent 100%),
-      radial-gradient(1px 1px at 30% 70%, rgba(255,255,200,0.5) 0%, transparent 100%),
-      radial-gradient(1px 1px at 50% 40%, rgba(255,255,200,0.9) 0%, transparent 100%),
-      radial-gradient(1px 1px at 70% 10%, rgba(255,255,200,0.6) 0%, transparent 100%),
-      radial-gradient(1px 1px at 80% 60%, rgba(255,255,200,0.7) 0%, transparent 100%),
-      radial-gradient(1px 1px at 15% 85%, rgba(255,255,200,0.6) 0%, transparent 100%),
-      radial-gradient(1px 1px at 55% 90%, rgba(255,255,200,0.5) 0%, transparent 100%),
-      radial-gradient(1px 1px at 25% 50%, rgba(255,255,200,0.8) 0%, transparent 100%),
-      radial-gradient(1px 1px at 65% 75%, rgba(255,255,200,0.6) 0%, transparent 100%);
-    animation: twinkle 4s infinite alternate;
-  }
-  #stars::after { animation-duration: 6s; animation-delay: 2s; }
-  @keyframes twinkle { from{opacity:0.4} to{opacity:1} }
-
-  .page {
-    position: relative; z-index: 1; max-width: 480px;
-    margin: 0 auto; padding: 0 16px 80px;
-  }
-
-  /* HEADER */
-  .header { text-align: center; padding: 28px 0 16px; animation: fadeDown 0.8s ease both; }
-  @keyframes fadeDown { from{opacity:0;transform:translateY(-30px)} to{opacity:1;transform:none} }
-  .emblem { font-size: 52px; line-height:1; animation: spin3d 8s linear infinite; display:inline-block; }
-  @keyframes spin3d {
-    0%{transform:rotateY(0deg) scale(1)} 25%{transform:rotateY(90deg) scale(1.15)}
-    50%{transform:rotateY(180deg) scale(1)} 75%{transform:rotateY(270deg) scale(0.85)}
-    100%{transform:rotateY(360deg) scale(1)}
-  }
-  .brand {
-    font-family: 'Cinzel Decorative', cursive; font-size: 19px; font-weight: 700;
-    letter-spacing: 2px;
-    background: linear-gradient(135deg,#FFD700 0%,#FFF0A0 40%,#FFD700 60%,#FFA500 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    margin: 10px 0 4px; background-size: 200% auto; animation: shimmer 3s ease infinite;
-  }
-  @keyframes shimmer { 0%{background-position:0% center} 50%{background-position:100% center} 100%{background-position:0% center} }
-  .subtitle-bar {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: linear-gradient(90deg, var(--red), #c62828);
-    color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 2px;
-    padding: 4px 16px; border-radius: 20px; margin: 4px 0 8px; text-transform: uppercase;
-    animation: pulse-badge 2s ease infinite;
-  }
-  @keyframes pulse-badge {
-    0%,100%{box-shadow:0 0 0 0 rgba(229,57,53,0.5)} 50%{box-shadow:0 0 0 8px rgba(229,57,53,0)}
-  }
-
-  /* JACKPOT */
-  .jackpot-card {
-    background: linear-gradient(135deg,#1a0a00 0%,#2d1500 50%,#1a0a00 100%);
-    border: 2px solid var(--gold); border-radius: 20px; padding: 20px;
-    text-align: center; margin: 14px 0; position: relative; overflow: hidden;
-    animation: fadeUp 0.8s 0.2s ease both;
-    box-shadow: 0 0 40px rgba(255,215,0,0.2), inset 0 0 60px rgba(255,165,0,0.05);
-  }
-  .jackpot-card::before {
-    content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%;
-    background: conic-gradient(transparent 0deg,rgba(255,215,0,0.03) 60deg,transparent 120deg);
-    animation: rotate 8s linear infinite;
-  }
-  @keyframes rotate { to{transform:rotate(360deg)} }
-  @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:none} }
-  .prize-label { font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--gold2); font-weight:600; }
-  .prize-amount {
-    font-family:'Cinzel Decorative',cursive; font-size:42px; font-weight:900;
-    background: linear-gradient(180deg,#FFE55C 0%,#FFD700 40%,#FFA500 100%);
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-    line-height:1.1; margin:4px 0; animation: numberPulse 2s ease infinite;
-  }
-  @keyframes numberPulse { 0%,100%{filter:brightness(1)} 50%{filter:brightness(1.3)} }
-  .prize-sub { font-size:13px; color:var(--muted); margin-bottom:12px; }
-  .mini-prizes { display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-top:8px; }
-  .mini-prize {
-    background:rgba(255,215,0,0.08); border:1px solid rgba(255,215,0,0.3);
-    border-radius:10px; padding:6px 12px; font-size:12px; color:var(--gold); font-weight:600;
-  }
-  .mini-prize span { display:block; font-size:10px; color:var(--muted); font-weight:400; }
-
-  /* TIMER */
-  .timer-section {
-    background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1);
-    border-radius:16px; padding:14px 20px; margin:12px 0; animation:fadeUp 0.8s 0.3s ease both;
-  }
-  .timer-label {
-    font-size:11px; letter-spacing:2px; text-transform:uppercase;
-    color:var(--red); font-weight:700; margin-bottom:10px;
-    display:flex; align-items:center; gap:6px;
-  }
-  .timer-label::before { content:'🔴'; font-size:9px; animation:blink 1s step-end infinite; }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-  .timer-boxes { display:flex; gap:8px; justify-content:center; }
-  .tbox {
-    flex:1; background:linear-gradient(180deg,#1e1e3a,#0d0d1a);
-    border:1px solid rgba(255,215,0,0.3); border-radius:12px; padding:10px 4px; text-align:center;
-  }
-  .tbox .num { font-family:'Cinzel Decorative',cursive; font-size:28px; font-weight:700; color:var(--gold); line-height:1; display:block; }
-  .tbox .unit { font-size:10px; color:var(--muted); letter-spacing:1px; margin-top:4px; display:block; }
-  .tcolon { font-size:24px; color:var(--gold); align-self:center; opacity:0.6; animation:blink 1s step-end infinite; }
-
-  /* TICKETS */
-  .tickets-section { margin:16px 0; animation:fadeUp 0.8s 0.4s ease both; }
-  .section-title {
-    font-size:13px; letter-spacing:2px; text-transform:uppercase;
-    color:var(--gold); font-weight:700; margin-bottom:12px;
-    display:flex; align-items:center; gap:8px;
-  }
-  .section-title::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,rgba(255,215,0,0.4),transparent); }
-  .ticket-meta {
-    display:flex; justify-content:space-between; align-items:center;
-    background:rgba(0,200,83,0.08); border:1px solid rgba(0,200,83,0.25);
-    border-radius:10px; padding:8px 14px; font-size:13px; color:#69f0ae; margin-bottom:10px;
-  }
-  .search-box {
-    width:100%; background:rgba(255,255,255,0.07); border:2px solid rgba(255,215,0,0.3);
-    border-radius:12px; padding:11px 16px; font-size:14px;
-    font-family:'Rajdhani',sans-serif; color:var(--white); outline:none;
-    transition:border-color 0.3s; margin-bottom:10px;
-  }
-  .search-box::placeholder { color:rgba(255,255,255,0.35); }
-  .search-box:focus { border-color:var(--gold); box-shadow:0 0 20px rgba(255,215,0,0.15); }
-  .ticket-count-badge {
-    background:rgba(255,215,0,0.08); border:1px solid rgba(255,215,0,0.2);
-    border-radius:8px; padding:6px 12px; font-size:12px; color:var(--gold); margin-bottom:10px;
-    display:flex; justify-content:space-between;
-  }
-
-  /* GRID */
-  .ticket-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px;
-    margin-bottom: 12px; max-height: 380px; overflow-y: auto; padding-right: 3px;
-  }
-  .ticket-grid::-webkit-scrollbar { width:4px; }
-  .ticket-grid::-webkit-scrollbar-track { background:rgba(255,255,255,0.04); border-radius:4px; }
-  .ticket-grid::-webkit-scrollbar-thumb { background:rgba(255,215,0,0.3); border-radius:4px; }
-
-  .ticket {
-    border-radius: 10px; border: 1.5px solid rgba(255,215,0,0.2);
-    background: linear-gradient(135deg,#1a1a2e,#16213e);
-    cursor: pointer; display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    padding: 9px 4px; font-size: 10px; font-weight: 700;
-    color: var(--muted); transition: all 0.2s cubic-bezier(0.34,1.56,0.64,1);
-    user-select: none; position: relative; gap: 3px;
-  }
-  .ticket .t-icon { font-size:14px; line-height:1; }
-  .ticket .t-num { font-size:10.5px; font-weight:700; letter-spacing:0.3px; font-family:'Rajdhani',sans-serif; }
-  .ticket:hover { border-color:rgba(255,215,0,0.7); transform:scale(1.06); color:var(--white); }
-  .ticket.selected {
-    border-color:var(--gold); background:linear-gradient(135deg,#3d2700,#1a1000);
-    color:var(--gold); transform:scale(1.04); box-shadow:0 0 12px rgba(255,215,0,0.35);
-  }
-  .ticket.selected::after {
-    content:'✓'; position:absolute; top:2px; right:5px;
-    font-size:9px; color:var(--green); font-weight:900;
-  }
-
-  /* CHIPS */
-  .selected-chips { display:flex; flex-wrap:wrap; gap:5px; margin:6px 0 10px; }
-  .chip {
-    background:rgba(255,215,0,0.1); border:1px solid rgba(255,215,0,0.35);
-    border-radius:8px; padding:3px 9px; font-size:11px; color:var(--gold);
-    font-weight:700; display:flex; align-items:center; gap:5px;
-  }
-  .chip-x { cursor:pointer; color:var(--red); font-size:13px; line-height:1; }
-
-  /* WARNING */
-  .min-warning {
-    text-align:center; font-size:12px; color:var(--red); font-weight:600;
-    margin:8px 0; padding:8px; border-radius:10px;
-    border:1px dashed rgba(229,57,53,0.4); background:rgba(229,57,53,0.06); display:none;
-  }
-  @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
-
-  /* SUMMARY */
-  .summary-box {
-    background:linear-gradient(135deg,rgba(255,215,0,0.06),rgba(255,165,0,0.03));
-    border:1px solid rgba(255,215,0,0.25); border-radius:14px;
-    padding:14px 18px; margin:12px 0; animation:fadeUp 0.8s 0.5s ease both;
-  }
-  .summary-row {
-    display:flex; justify-content:space-between; align-items:center;
-    padding:6px 0; font-size:14px; border-bottom:1px solid rgba(255,255,255,0.05);
-  }
-  .summary-row:last-child { border-bottom:none; }
-  .summary-row .label { color:var(--muted); }
-  .summary-row .value { font-weight:700; color:var(--white); }
-  .summary-row.total .label { color:var(--gold); font-weight:700; font-size:15px; }
-  .summary-row.total .value { color:var(--gold); font-size:20px; font-family:'Cinzel Decorative',cursive; }
-
-  /* WHATSAPP */
-  .whatsapp-section { margin:16px 0; animation:fadeUp 0.8s 0.6s ease both; }
-  .wa-number-input {
-    width:100%; background:rgba(255,255,255,0.06); border:2px solid rgba(255,255,255,0.15);
-    border-radius:14px; padding:14px 18px; font-size:16px;
-    font-family:'Rajdhani',sans-serif; color:var(--white); margin-bottom:12px;
-    transition:border-color 0.3s; outline:none;
-  }
-  .wa-number-input::placeholder { color:rgba(255,255,255,0.35); font-size:14px; }
-  .wa-number-input:focus { border-color:#25D366; box-shadow:0 0 20px rgba(37,211,102,0.15); }
-  .btn-whatsapp {
-    width:100%; padding:18px; border-radius:16px; border:none;
-    background:linear-gradient(135deg,#128C7E 0%,#25D366 50%,#128C7E 100%);
-    background-size:200% auto; color:white; font-family:'Rajdhani',sans-serif;
-    font-size:18px; font-weight:700; letter-spacing:1px; cursor:pointer;
-    display:flex; align-items:center; justify-content:center; gap:10px;
-    transition:all 0.3s ease; box-shadow:0 8px 32px rgba(37,211,102,0.3);
-    animation:pulse-green 2.5s ease infinite; position:relative; overflow:hidden;
-  }
-  .btn-whatsapp::after {
-    content:''; position:absolute; top:0; left:-100%; width:60%; height:100%;
-    background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);
-    animation:swipe 3s 1s infinite;
-  }
-  @keyframes swipe { to{left:200%} }
-  @keyframes pulse-green {
-    0%,100%{box-shadow:0 8px 32px rgba(37,211,102,0.3)} 50%{box-shadow:0 8px 48px rgba(37,211,102,0.55)}
-  }
-  .btn-whatsapp:hover { background-position:right center; transform:translateY(-2px); }
-  .btn-whatsapp:active { transform:scale(0.98); }
-
-  /* TRUST */
-  .trust-strip {
-    display:flex; align-items:center; justify-content:center; gap:14px;
-    margin:14px 0; flex-wrap:wrap; animation:fadeUp 0.8s 0.7s ease both;
-  }
-  .trust-badge { display:flex; align-items:center; gap:5px; font-size:11px; color:var(--muted); font-weight:600; }
-  .divider { height:1px; background:rgba(255,255,255,0.07); margin:8px 0; }
-
-  /* PAYMENT */
-  .payment-section { text-align:center; margin:12px 0; animation:fadeUp 0.8s 0.8s ease both; }
-  .payment-label { font-size:11px; color:var(--muted); letter-spacing:1px; margin-bottom:10px; text-transform:uppercase; }
-  .payment-icons { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; }
-  .pay-chip {
-    background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12);
-    border-radius:10px; padding:8px 16px; font-size:13px; font-weight:700; color:var(--white);
-  }
-
-  /* NOTICE */
-  .notice {
-    background:rgba(255,165,0,0.07); border-left:3px solid var(--gold2);
-    border-radius:0 10px 10px 0; padding:10px 14px; font-size:12px;
-    color:rgba(255,200,100,0.85); line-height:1.5; margin:12px 0;
-  }
-  .footer {
-    text-align:center; font-size:11px; color:rgba(255,255,255,0.25);
-    margin-top:24px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.06);
-  }
-
-  /* CONFETTI */
-  .confetti-container { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:999; overflow:hidden; }
-  .confetti-piece { position:absolute; border-radius:2px; animation:fall linear forwards; }
-  @keyframes fall { 0%{transform:translateY(-20px) rotate(0deg);opacity:1} 100%{transform:translateY(100vh) rotate(720deg);opacity:0} }
-  @keyframes bounceIn { 0%{transform:scale(0.5);opacity:0} 70%{transform:scale(1.1)} 100%{transform:scale(1);opacity:1} }
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--g:#FFD700;--r:#e53935;--gr:#00c853;--bg:#0a0a1a;--m:rgba(255,255,255,.6)}
+body{font-family:'Rajdhani','Segoe UI',sans-serif;background:radial-gradient(ellipse at 20% 30%,#1a1040,#0a0a1a);color:#fff;min-height:100vh;overflow-x:hidden}
+.pg{max-width:480px;margin:0 auto;padding:0 13px 70px}
+.hd{text-align:center;padding:22px 0 10px}
+.em{font-size:46px;display:inline-block;animation:sp 8s linear infinite}
+@keyframes sp{0%{transform:rotateY(0) scale(1)}25%{transform:rotateY(90deg) scale(1.1)}50%{transform:rotateY(180deg) scale(1)}75%{transform:rotateY(270deg) scale(.9)}100%{transform:rotateY(360deg) scale(1)}}
+.br{font-size:17px;font-weight:900;letter-spacing:2px;background:linear-gradient(135deg,#FFD700,#FFF0A0,#FFD700,#FFA500);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:8px 0 4px;background-size:200% auto;animation:sh 3s ease infinite}
+@keyframes sh{0%{background-position:0}50%{background-position:100%}100%{background-position:0}}
+.sb{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(90deg,#e53935,#c62828);color:#fff;font-size:11px;font-weight:700;letter-spacing:2px;padding:4px 14px;border-radius:20px;margin:4px 0 8px;text-transform:uppercase;animation:pb 2s ease infinite}
+@keyframes pb{0%,100%{box-shadow:0 0 0 0 rgba(229,57,53,.5)}50%{box-shadow:0 0 0 8px rgba(229,57,53,0)}}
+.jc{background:linear-gradient(135deg,#1a0a00,#2d1500,#1a0a00);border:2px solid var(--g);border-radius:18px;padding:16px;text-align:center;margin:12px 0;box-shadow:0 0 36px rgba(255,215,0,.2)}
+.pl{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#FFA500;font-weight:600}
+.pa{font-size:38px;font-weight:900;background:linear-gradient(180deg,#FFE55C,#FFD700,#FFA500);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:np 2s ease infinite}
+@keyframes np{0%,100%{filter:brightness(1)}50%{filter:brightness(1.3)}}
+.ps{font-size:12px;color:var(--m);margin-bottom:8px}
+.mp{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;margin-top:6px}
+.mp div{background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.3);border-radius:9px;padding:4px 9px;font-size:11px;color:var(--g);font-weight:600}
+.mp div span{display:block;font-size:9px;color:var(--m);font-weight:400}
+.tm{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:11px 16px;margin:9px 0}
+.tl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--r);font-weight:700;margin-bottom:9px;display:flex;align-items:center;gap:5px}
+.tl::before{content:'ðŸ”´';font-size:8px;animation:bl 1s step-end infinite}
+@keyframes bl{0%,100%{opacity:1}50%{opacity:0}}
+.tb{display:flex;gap:7px;justify-content:center}
+.bx{flex:1;background:linear-gradient(180deg,#1e1e3a,#0d0d1a);border:1px solid rgba(255,215,0,.3);border-radius:11px;padding:9px 4px;text-align:center}
+.bx .n{font-size:25px;font-weight:900;color:var(--g);line-height:1;display:block}
+.bx .u{font-size:10px;color:var(--m);letter-spacing:1px;margin-top:3px;display:block}
+.cl{font-size:21px;color:var(--g);align-self:center;opacity:.6;animation:bl 1s step-end infinite}
+.st{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--g);font-weight:700;margin-bottom:9px;display:flex;align-items:center;gap:7px}
+.st::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(255,215,0,.4),transparent)}
+.tm2{display:flex;justify-content:space-between;align-items:center;background:rgba(0,200,83,.08);border:1px solid rgba(0,200,83,.25);border-radius:9px;padding:6px 11px;font-size:12px;color:#69f0ae;margin-bottom:7px}
+.sx{width:100%;background:rgba(255,255,255,.07);border:2px solid rgba(255,215,0,.3);border-radius:11px;padding:9px 13px;font-size:14px;font-family:inherit;color:#fff;outline:none;transition:border-color .3s;margin-bottom:7px}
+.sx::placeholder{color:rgba(255,255,255,.35)}
+.sx:focus{border-color:var(--g);box-shadow:0 0 14px rgba(255,215,0,.15)}
+.bd{background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.2);border-radius:7px;padding:5px 9px;font-size:11px;color:var(--g);margin-bottom:7px;display:flex;justify-content:space-between}
+.gd{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:9px;max-height:350px;overflow-y:auto;padding-right:2px}
+.gd::-webkit-scrollbar{width:3px}
+.gd::-webkit-scrollbar-thumb{background:rgba(255,215,0,.3);border-radius:4px}
+.t{border-radius:9px;border:1.5px solid rgba(255,215,0,.2);background:linear-gradient(135deg,#1a1a2e,#16213e);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:7px 3px;font-size:10px;font-weight:700;color:var(--m);transition:all .18s;user-select:none;position:relative;gap:2px}
+.t span{font-size:12px;line-height:1}
+.t b{font-size:10px;font-weight:700;letter-spacing:.3px}
+.t:hover{border-color:rgba(255,215,0,.7);transform:scale(1.05);color:#fff}
+.t.hidden{display:none}
+.t.sel{border-color:var(--g);background:linear-gradient(135deg,#3d2700,#1a1000);color:var(--g);transform:scale(1.04);box-shadow:0 0 9px rgba(255,215,0,.35)}
+.t.sel::after{content:'âœ“';position:absolute;top:2px;right:4px;font-size:9px;color:var(--gr);font-weight:900}
+.ch{display:flex;flex-wrap:wrap;gap:4px;margin:5px 0 8px}
+.chip{background:rgba(255,215,0,.1);border:1px solid rgba(255,215,0,.35);border-radius:7px;padding:3px 7px;font-size:11px;color:var(--g);font-weight:700;display:flex;align-items:center;gap:4px}
+.cx{cursor:pointer;color:var(--r);font-size:13px;line-height:1}
+.mw{text-align:center;font-size:12px;color:var(--r);font-weight:600;margin:5px 0;padding:7px;border-radius:9px;border:1px dashed rgba(229,57,53,.4);background:rgba(229,57,53,.06);display:none}
+@keyframes sk{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.sm{background:linear-gradient(135deg,rgba(255,215,0,.06),rgba(255,165,0,.03));border:1px solid rgba(255,215,0,.25);border-radius:13px;padding:11px 14px;margin:9px 0}
+.sr{display:flex;justify-content:space-between;align-items:center;padding:5px 0;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05)}
+.sr:last-child{border-bottom:none}
+.sr .lb{color:var(--m)}
+.sr .vl{font-weight:700;color:#fff}
+.sr.tot .lb{color:var(--g);font-weight:700;font-size:13px}
+.sr.tot .vl{color:var(--g);font-size:17px;font-weight:900}
+.bw{width:100%;padding:15px;border-radius:15px;border:none;background:linear-gradient(135deg,#128C7E,#25D366,#128C7E);background-size:200% auto;color:#fff;font-family:inherit;font-size:16px;font-weight:700;letter-spacing:1px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;box-shadow:0 7px 26px rgba(37,211,102,.3);animation:pg 2.5s ease infinite;margin:12px 0}
+@keyframes pg{0%,100%{box-shadow:0 7px 26px rgba(37,211,102,.3)}50%{box-shadow:0 7px 40px rgba(37,211,102,.55)}}
+.bw:active{transform:scale(.98)}
+.ts{display:flex;align-items:center;justify-content:center;gap:12px;margin:10px 0;flex-wrap:wrap}
+.tb2{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--m);font-weight:600}
+.dv{height:1px;background:rgba(255,255,255,.07);margin:7px 0}
+.py{text-align:center;margin:9px 0}
+.pyl{font-size:10px;color:var(--m);letter-spacing:1px;margin-bottom:7px;text-transform:uppercase}
+.pyi{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}
+.pc{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:9px;padding:6px 13px;font-size:12px;font-weight:700;color:#fff}
+.nt{background:rgba(255,165,0,.07);border-left:3px solid #FFA500;border-radius:0 9px 9px 0;padding:9px 11px;font-size:11px;color:rgba(255,200,100,.85);line-height:1.5;margin:9px 0}
+.ft{text-align:center;font-size:10px;color:rgba(255,255,255,.22);margin-top:18px;padding-top:13px;border-top:1px solid rgba(255,255,255,.06)}
+.cf{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:999;overflow:hidden}
+.cp{position:absolute;border-radius:2px;animation:fl linear forwards}
+@keyframes fl{0%{transform:translateY(-20px) rotate(0);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
 </style>
 </head>
 <body>
-<div id="stars"></div>
-<div class="confetti-container" id="confetti"></div>
-
-<div class="page">
-
-  <div class="header">
-    <div class="emblem">🏆</div>
-    <div class="brand">KERALA GOVERNMENT<br>LOTTERY</div>
-    <div class="subtitle-bar">🎯 Official Jackpot Draw 2026</div>
-  </div>
-
-  <div class="jackpot-card">
-    <div class="prize-label">🥇 FIRST PRIZE</div>
-    <div class="prize-amount">₹25 Crore</div>
-    <div class="prize-sub">Keralalotteries.net Official Draw</div>
-    <div class="mini-prizes">
-      <div class="mini-prize">₹5 Lakh <span>2nd Prize</span></div>
-      <div class="mini-prize">₹1 Lakh <span>3rd Prize</span></div>
-      <div class="mini-prize">₹5,000 <span>Consolation</span></div>
-    </div>
-  </div>
-
-  <div class="timer-section">
-    <div class="timer-label">LIVE OFFER CLOSING IN</div>
-    <div class="timer-boxes">
-      <div class="tbox"><span class="num" id="t-h">00</span><span class="unit">HOURS</span></div>
-      <div class="tcolon">:</div>
-      <div class="tbox"><span class="num" id="t-m">14</span><span class="unit">MINS</span></div>
-      <div class="tcolon">:</div>
-      <div class="tbox"><span class="num" id="t-s">59</span><span class="unit">SECS</span></div>
-    </div>
-  </div>
-
-  <div class="tickets-section">
-    <div class="section-title">🎟️ Tickets Select Karein</div>
-    <div class="ticket-meta">
-      <span>💰 Price: <strong style="color:#fff">₹40 / ticket</strong></span>
-      <span style="color:#69f0ae;font-weight:700">⚠️ Min. 3 Required</span>
-    </div>
-    <input type="text" class="search-box" id="searchBox" placeholder="🔍 Ticket number search karein... (e.g. KL058)" oninput="filterTickets()" />
-    <div class="ticket-count-badge" id="countBadge">
-      <span id="badgeTotal">📋 Total: 0</span>
-      <span id="badgeSel" style="color:#69f0ae">✅ Selected: 0</span>
-    </div>
-    <div class="ticket-grid" id="ticketGrid"></div>
-    <div id="selectedChips" class="selected-chips"></div>
-    <div class="min-warning" id="minWarning">⚠️ Minimum 3 Tickets select karna zaroori hai!</div>
-  </div>
-
-  <div class="summary-box">
-    <div class="summary-row">
-      <span class="label">Selected Tickets</span>
-      <span class="value" id="countDisplay">0</span>
-    </div>
-    <div class="summary-row">
-      <span class="label">Price per Ticket</span>
-      <span class="value">₹40</span>
-    </div>
-    <div class="summary-row total">
-      <span class="label">💵 Total Amount</span>
-      <span class="value" id="totalDisplay">₹0</span>
-    </div>
-  </div>
-
-  <div class="whatsapp-section" style="margin-top:12px;">
-    <button class="btn-whatsapp" onclick="submitWhatsapp()">
-      <span style="font-size:24px">📲</span>
-      WHATSAPP PAR BOOK KAREIN
-    </button>
-  </div>
-
-  <div class="trust-strip">
-    <div class="trust-badge">🔒 Secure Payment</div>
-    <div class="trust-badge">✅ Official Site</div>
-    <div class="trust-badge">⚡ Instant Confirm</div>
-  </div>
-  <div class="divider"></div>
-
-  <div class="payment-section">
-    <div class="payment-label">🔒 Secure Payment via</div>
-    <div class="payment-icons">
-      <div class="pay-chip">📱 GPay</div>
-      <div class="pay-chip">📲 PhonePe</div>
-      <div class="pay-chip">💳 Paytm</div>
-    </div>
-  </div>
-
-  <div class="notice">
-    ⚠️ <strong>Note:</strong> Minimum 3 Tickets book karna compulsory hai. Sirf VIP tickets abhi available hain. Offer limited time ke liye hai.
-  </div>
-
-  <div class="footer">© 2026 Kerala State Lotteries Department · All rights reserved</div>
+<div class="cf" id="cf"></div>
+<div class="pg">
+<div class="hd">
+  <div class="em">ðŸ†</div>
+  <div class="br">KERALA GOVERNMENT<br>LOTTERY</div>
+  <div class="sb">ðŸŽ¯ Official Jackpot Draw 2026</div>
 </div>
+<div class="jc">
+  <div class="pl">ðŸ¥‡ FIRST PRIZE</div>
+  <div class="pa">â‚¹25 Crore</div>
+  <div class="ps">Keralalotteries.net Official Draw</div>
+  <div class="mp">
+    <div>â‚¹5 Lakh<span>2nd Prize</span></div>
+    <div>â‚¹1 Lakh<span>3rd Prize</span></div>
+    <div>â‚¹5,000<span>Consolation</span></div>
+  </div>
+</div>
+<div class="tm">
+  <div class="tl">LIVE OFFER CLOSING IN</div>
+  <div class="tb">
+    <div class="bx"><span class="n" id="th">00</span><span class="u">HOURS</span></div>
+    <div class="cl">:</div>
+    <div class="bx"><span class="n" id="tm">14</span><span class="u">MINS</span></div>
+    <div class="cl">:</div>
+    <div class="bx"><span class="n" id="ts">59</span><span class="u">SECS</span></div>
+  </div>
+</div>
+<div>
+  <div class="st">ðŸŽŸï¸ Tickets Select Karein</div>
+  <div class="tm2">
+    <span>ðŸ’° â‚¹40 / ticket</span>
+    <span>âš ï¸ Min. 3 Required</span>
+  </div>
+  <input class="sx" id="sx" placeholder="ðŸ” Search ticket... (e.g. KL058)" oninput="F()"/>
+  <div class="bd"><span id="bt">ðŸ“‹ Total: 382</span><span id="bs" style="color:#69f0ae">âœ… Selected: 0</span></div>
+  <div class="gd" id="gd"><div class="t" onclick="T(this,'KL058198')" data-n="KL058198"><span>ðŸŽŸ</span><b>KL058198</b></div>
+<div class="t" onclick="T(this,'KL457432')" data-n="KL457432"><span>ðŸŽŸ</span><b>KL457432</b></div>
+<div class="t" onclick="T(this,'KL074526')" data-n="KL074526"><span>ðŸŽŸ</span><b>KL074526</b></div>
+<div class="t" onclick="T(this,'KL208982')" data-n="KL208982"><span>ðŸŽŸ</span><b>KL208982</b></div>
+<div class="t" onclick="T(this,'KL992875')" data-n="KL992875"><span>ðŸŽŸ</span><b>KL992875</b></div>
+<div class="t" onclick="T(this,'KL145584')" data-n="KL145584"><span>ðŸŽŸ</span><b>KL145584</b></div>
+<div class="t" onclick="T(this,'KL289040')" data-n="KL289040"><span>ðŸŽŸ</span><b>KL289040</b></div>
+<div class="t" onclick="T(this,'KL415540')" data-n="KL415540"><span>ðŸŽŸ</span><b>KL415540</b></div>
+<div class="t" onclick="T(this,'KL379713')" data-n="KL379713"><span>ðŸŽŸ</span><b>KL379713</b></div>
+<div class="t" onclick="T(this,'KL808624')" data-n="KL808624"><span>ðŸŽŸ</span><b>KL808624</b></div>
+<div class="t" onclick="T(this,'KL672490')" data-n="KL672490"><span>ðŸŽŸ</span><b>KL672490</b></div>
+<div class="t" onclick="T(this,'KL829629')" data-n="KL829629"><span>ðŸŽŸ</span><b>KL829629</b></div>
+<div class="t" onclick="T(this,'KL678491')" data-n="KL678491"><span>ðŸŽŸ</span><b>KL678491</b></div>
+<div class="t" onclick="T(this,'KL611324')" data-n="KL611324"><span>ðŸŽŸ</span><b>KL611324</b></div>
+<div class="t" onclick="T(this,'KL173795')" data-n="KL173795"><span>ðŸŽŸ</span><b>KL173795</b></div>
+<div class="t" onclick="T(this,'KL140845')" data-n="KL140845"><span>ðŸŽŸ</span><b>KL140845</b></div>
+<div class="t" onclick="T(this,'KL161986')" data-n="KL161986"><span>ðŸŽŸ</span><b>KL161986</b></div>
+<div class="t" onclick="T(this,'KL697871')" data-n="KL697871"><span>ðŸŽŸ</span><b>KL697871</b></div>
+<div class="t" onclick="T(this,'KL169021')" data-n="KL169021"><span>ðŸŽŸ</span><b>KL169021</b></div>
+<div class="t" onclick="T(this,'KL623875')" data-n="KL623875"><span>ðŸŽŸ</span><b>KL623875</b></div>
+<div class="t" onclick="T(this,'KL946454')" data-n="KL946454"><span>ðŸŽŸ</span><b>KL946454</b></div>
+<div class="t" onclick="T(this,'KL517803')" data-n="KL517803"><span>ðŸŽŸ</span><b>KL517803</b></div>
+<div class="t" onclick="T(this,'KL723948')" data-n="KL723948"><span>ðŸŽŸ</span><b>KL723948</b></div>
+<div class="t" onclick="T(this,'KL533445')" data-n="KL533445"><span>ðŸŽŸ</span><b>KL533445</b></div>
+<div class="t" onclick="T(this,'KL774894')" data-n="KL774894"><span>ðŸŽŸ</span><b>KL774894</b></div>
+<div class="t" onclick="T(this,'KL335231')" data-n="KL335231"><span>ðŸŽŸ</span><b>KL335231</b></div>
+<div class="t" onclick="T(this,'KL716666')" data-n="KL716666"><span>ðŸŽŸ</span><b>KL716666</b></div>
+<div class="t" onclick="T(this,'KL876489')" data-n="KL876489"><span>ðŸŽŸ</span><b>KL876489</b></div>
+<div class="t" onclick="T(this,'KL357894')" data-n="KL357894"><span>ðŸŽŸ</span><b>KL357894</b></div>
+<div class="t" onclick="T(this,'KL081341')" data-n="KL081341"><span>ðŸŽŸ</span><b>KL081341</b></div>
+<div class="t" onclick="T(this,'KL949742')" data-n="KL949742"><span>ðŸŽŸ</span><b>KL949742</b></div>
+<div class="t" onclick="T(this,'KL526945')" data-n="KL526945"><span>ðŸŽŸ</span><b>KL526945</b></div>
+<div class="t" onclick="T(this,'KL405006')" data-n="KL405006"><span>ðŸŽŸ</span><b>KL405006</b></div>
+<div class="t" onclick="T(this,'KL828512')" data-n="KL828512"><span>ðŸŽŸ</span><b>KL828512</b></div>
+<div class="t" onclick="T(this,'KL816289')" data-n="KL816289"><span>ðŸŽŸ</span><b>KL816289</b></div>
+<div class="t" onclick="T(this,'KL510435')" data-n="KL510435"><span>ðŸŽŸ</span><b>KL510435</b></div>
+<div class="t" onclick="T(this,'KL700045')" data-n="KL700045"><span>ðŸŽŸ</span><b>KL700045</b></div>
+<div class="t" onclick="T(this,'KL074556')" data-n="KL074556"><span>ðŸŽŸ</span><b>KL074556</b></div>
+<div class="t" onclick="T(this,'KL786965')" data-n="KL786965"><span>ðŸŽŸ</span><b>KL786965</b></div>
+<div class="t" onclick="T(this,'KL146075')" data-n="KL146075"><span>ðŸŽŸ</span><b>KL146075</b></div>
+<div class="t" onclick="T(this,'KL278882')" data-n="KL278882"><span>ðŸŽŸ</span><b>KL278882</b></div>
+<div class="t" onclick="T(this,'KL169394')" data-n="KL169394"><span>ðŸŽŸ</span><b>KL169394</b></div>
+<div class="t" onclick="T(this,'KL379099')" data-n="KL379099"><span>ðŸŽŸ</span><b>KL379099</b></div>
+<div class="t" onclick="T(this,'KL087497')" data-n="KL087497"><span>ðŸŽŸ</span><b>KL087497</b></div>
+<div class="t" onclick="T(this,'KL728417')" data-n="KL728417"><span>ðŸŽŸ</span><b>KL728417</b></div>
+<div class="t" onclick="T(this,'KL208596')" data-n="KL208596"><span>ðŸŽŸ</span><b>KL208596</b></div>
+<div class="t" onclick="T(this,'KL142304')" data-n="KL142304"><span>ðŸŽŸ</span><b>KL142304</b></div>
+<div class="t" onclick="T(this,'KL152056')" data-n="KL152056"><span>ðŸŽŸ</span><b>KL152056</b></div>
+<div class="t" onclick="T(this,'KL348301')" data-n="KL348301"><span>ðŸŽŸ</span><b>KL348301</b></div>
+<div class="t" onclick="T(this,'KL451054')" data-n="KL451054"><span>ðŸŽŸ</span><b>KL451054</b></div>
+<div class="t" onclick="T(this,'KL541586')" data-n="KL541586"><span>ðŸŽŸ</span><b>KL541586</b></div>
+<div class="t" onclick="T(this,'KL516418')" data-n="KL516418"><span>ðŸŽŸ</span><b>KL516418</b></div>
+<div class="t" onclick="T(this,'KL774678')" data-n="KL774678"><span>ðŸŽŸ</span><b>KL774678</b></div>
+<div class="t" onclick="T(this,'KL675216')" data-n="KL675216"><span>ðŸŽŸ</span><b>KL675216</b></div>
+<div class="t" onclick="T(this,'KL773482')" data-n="KL773482"><span>ðŸŽŸ</span><b>KL773482</b></div>
+<div class="t" onclick="T(this,'KL875215')" data-n="KL875215"><span>ðŸŽŸ</span><b>KL875215</b></div>
+<div class="t" onclick="T(this,'KL973486')" data-n="KL973486"><span>ðŸŽŸ</span><b>KL973486</b></div>
+<div class="t" onclick="T(this,'KL055725')" data-n="KL055725"><span>ðŸŽŸ</span><b>KL055725</b></div>
+<div class="t" onclick="T(this,'KL728021')" data-n="KL728021"><span>ðŸŽŸ</span><b>KL728021</b></div>
+<div class="t" onclick="T(this,'KL261082')" data-n="KL261082"><span>ðŸŽŸ</span><b>KL261082</b></div>
+<div class="t" onclick="T(this,'KL882873')" data-n="KL882873"><span>ðŸŽŸ</span><b>KL882873</b></div>
+<div class="t" onclick="T(this,'KL786664')" data-n="KL786664"><span>ðŸŽŸ</span><b>KL786664</b></div>
+<div class="t" onclick="T(this,'KL799385')" data-n="KL799385"><span>ðŸŽŸ</span><b>KL799385</b></div>
+<div class="t" onclick="T(this,'KL702562')" data-n="KL702562"><span>ðŸŽŸ</span><b>KL702562</b></div>
+<div class="t" onclick="T(this,'KL809917')" data-n="KL809917"><span>ðŸŽŸ</span><b>KL809917</b></div>
+<div class="t" onclick="T(this,'KL091308')" data-n="KL091308"><span>ðŸŽŸ</span><b>KL091308</b></div>
+<div class="t" onclick="T(this,'KL847799')" data-n="KL847799"><span>ðŸŽŸ</span><b>KL847799</b></div>
+<div class="t" onclick="T(this,'KL828590')" data-n="KL828590"><span>ðŸŽŸ</span><b>KL828590</b></div>
+<div class="t" onclick="T(this,'KL218925')" data-n="KL218925"><span>ðŸŽŸ</span><b>KL218925</b></div>
+<div class="t" onclick="T(this,'KL923356')" data-n="KL923356"><span>ðŸŽŸ</span><b>KL923356</b></div>
+<div class="t" onclick="T(this,'KL334455')" data-n="KL334455"><span>ðŸŽŸ</span><b>KL334455</b></div>
+<div class="t" onclick="T(this,'KL237084')" data-n="KL237084"><span>ðŸŽŸ</span><b>KL237084</b></div>
+<div class="t" onclick="T(this,'KL349493')" data-n="KL349493"><span>ðŸŽŸ</span><b>KL349493</b></div>
+<div class="t" onclick="T(this,'KL751730')" data-n="KL751730"><span>ðŸŽŸ</span><b>KL751730</b></div>
+<div class="t" onclick="T(this,'KL815149')" data-n="KL815149"><span>ðŸŽŸ</span><b>KL815149</b></div>
 
+<div class="t" onclick="T(this,'KL663220')" data-n="KL663220"><span>ðŸŽŸ</span><b>KL663220</b></div>
+<div class="t" onclick="T(this,'KL272119')" data-n="KL272119"><span>ðŸŽŸ</span><b>KL272119</b></div>
+<div class="t" onclick="T(this,'KL780484')" data-n="KL780484"><span>ðŸŽŸ</span><b>KL780484</b></div>
+<div class="t" onclick="T(this,'KL359495')" data-n="KL359495"><span>ðŸŽŸ</span><b>KL359495</b></div>
+<div class="t" onclick="T(this,'KL019425')" data-n="KL019425"><span>ðŸŽŸ</span><b>KL019425</b></div>
+<div class="t" onclick="T(this,'KL605301')" data-n="KL605301"><span>ðŸŽŸ</span><b>KL605301</b></div>
+<div class="t" onclick="T(this,'KL774676')" data-n="KL774676"><span>ðŸŽŸ</span><b>KL774676</b></div>
+<div class="t" onclick="T(this,'KL307495')" data-n="KL307495"><span>ðŸŽŸ</span><b>KL307495</b></div>
+<div class="t" onclick="T(this,'KL200620')" data-n="KL200620"><span>ðŸŽŸ</span><b>KL200620</b></div>
+<div class="t" onclick="T(this,'KL234874')" data-n="KL234874"><span>ðŸŽŸ</span><b>KL234874</b></div>
+<div class="t" onclick="T(this,'KL205622')" data-n="KL205622"><span>ðŸŽŸ</span><b>KL205622</b></div>
+<div class="t" onclick="T(this,'KL244732')" data-n="KL244732"><span>ðŸŽŸ</span><b>KL244732</b></div>
+<div class="t" onclick="T(this,'KL614738')" data-n="KL614738"><span>ðŸŽŸ</span><b>KL614738</b></div>
+<div class="t" onclick="T(this,'KL257036')" data-n="KL257036"><span>ðŸŽŸ</span><b>KL257036</b></div>
+<div class="t" onclick="T(this,'KL199929')" data-n="KL199929"><span>ðŸŽŸ</span><b>KL199929</b></div>
+<div class="t" onclick="T(this,'KL930402')" data-n="KL930402"><span>ðŸŽŸ</span><b>KL930402</b></div>
+<div class="t" onclick="T(this,'KL304493')" data-n="KL304493"><span>ðŸŽŸ</span><b>KL304493</b></div>
+<div class="t" onclick="T(this,'KL312264')" data-n="KL312264"><span>ðŸŽŸ</span><b>KL312264</b></div>
+<div class="t" onclick="T(this,'KL332181')" data-n="KL332181"><span>ðŸŽŸ</span><b>KL332181</b></div>
+<div class="t" onclick="T(this,'KL951585')" data-n="KL951585"><span>ðŸŽŸ</span><b>KL951585</b></div>
+<div class="t" onclick="T(this,'KL143259')" data-n="KL143259"><span>ðŸŽŸ</span><b>KL143259</b></div>
+<div class="t" onclick="T(this,'KL097795')" data-n="KL097795"><span>ðŸŽŸ</span><b>KL097795</b></div>
+<div class="t" onclick="T(this,'KL986704')" data-n="KL986704"><span>ðŸŽŸ</span><b>KL986704</b></div>
+<div class="t" onclick="T(this,'KL278891')" data-n="KL278891"><span>ðŸŽŸ</span><b>KL278891</b></div>
+<div class="t" onclick="T(this,'KL599633')" data-n="KL599633"><span>ðŸŽŸ</span><b>KL599633</b></div>
+<div class="t" onclick="T(this,'KL015374')" data-n="KL015374"><span>ðŸŽŸ</span><b>KL015374</b></div>
+<div class="t" onclick="T(this,'KL872485')" data-n="KL872485"><span>ðŸŽŸ</span><b>KL872485</b></div>
+<div class="t" onclick="T(this,'KL000373')" data-n="KL000373"><span>ðŸŽŸ</span><b>KL000373</b></div>
+<div class="t" onclick="T(this,'KL949954')" data-n="KL949954"><span>ðŸŽŸ</span><b>KL949954</b></div>
+<div class="t" onclick="T(this,'KL619046')" data-n="KL619046"><span>ðŸŽŸ</span><b>KL619046</b></div>
+<div class="t" onclick="T(this,'KL949951')" data-n="KL949951"><span>ðŸŽŸ</span><b>KL949951</b></div>
+<div class="t" onclick="T(this,'KL266984')" data-n="KL266984"><span>ðŸŽŸ</span><b>KL266984</b></div>
+<div class="t" onclick="T(this,'KL234871')" data-n="KL234871"><span>ðŸŽŸ</span><b>KL234871</b></div>
+<div class="t" onclick="T(this,'KL476506')" data-n="KL476506"><span>ðŸŽŸ</span><b>KL476506</b></div>
+<div class="t" onclick="T(this,'KL419381')" data-n="KL419381"><span>ðŸŽŸ</span><b>KL419381</b></div>
+<div class="t" onclick="T(this,'KL779895')" data-n="KL779895"><span>ðŸŽŸ</span><b>KL779895</b></div>
+<div class="t" onclick="T(this,'KL528812')" data-n="KL528812"><span>ðŸŽŸ</span><b>KL528812</b></div>
+<div class="t" onclick="T(this,'KL336582')" data-n="KL336582"><span>ðŸŽŸ</span><b>KL336582</b></div>
+<div class="t" onclick="T(this,'KL456512')" data-n="KL456512"><span>ðŸŽŸ</span><b>KL456512</b></div>
+<div class="t" onclick="T(this,'KL467215')" data-n="KL467215"><span>ðŸŽŸ</span><b>KL467215</b></div>
+<div class="t" onclick="T(this,'KL725925')" data-n="KL725925"><span>ðŸŽŸ</span><b>KL725925</b></div>
+<div class="t" onclick="T(this,'KL673209')" data-n="KL673209"><span>ðŸŽŸ</span><b>KL673209</b></div>
+<div class="t" onclick="T(this,'KL248985')" data-n="KL248985"><span>ðŸŽŸ</span><b>KL248985</b></div>
+<div class="t" onclick="T(this,'KL694204')" data-n="KL694204"><span>ðŸŽŸ</span><b>KL694204</b></div>
+<div class="t" onclick="T(this,'KL058162')" data-n="KL058162"><span>ðŸŽŸ</span><b>KL058162</b></div>
+<div class="t" onclick="T(this,'KL273912')" data-n="KL273912"><span>ðŸŽŸ</span><b>KL273912</b></div>
+<div class="t" onclick="T(this,'KL055063')" data-n="KL055063"><span>ðŸŽŸ</span><b>KL055063</b></div>
+<div class="t" onclick="T(this,'KL795629')" data-n="KL795629"><span>ðŸŽŸ</span><b>KL795629</b></div>
+<div class="t" onclick="T(this,'KL974628')" data-n="KL974628"><span>ðŸŽŸ</span><b>KL974628</b></div>
+<div class="t" onclick="T(this,'KL971470')" data-n="KL971470"><span>ðŸŽŸ</span><b>KL971470</b></div>
+<div class="t" onclick="T(this,'KL951580')" data-n="KL951580"><span>ðŸŽŸ</span><b>KL951580</b></div>
+<div class="t" onclick="T(this,'KL465215')" data-n="KL465215"><span>ðŸŽŸ</span><b>KL465215</b></div>
+<div class="t" onclick="T(this,'KL250828')" data-n="KL250828"><span>ðŸŽŸ</span><b>KL250828</b></div>
+<div class="t" onclick="T(this,'KL277772')" data-n="KL277772"><span>ðŸŽŸ</span><b>KL277772</b></div>
+<div class="t" onclick="T(this,'KL575792')" data-n="KL575792"><span>ðŸŽŸ</span><b>KL575792</b></div>
+<div class="t" onclick="T(this,'KL255551')" data-n="KL255551"><span>ðŸŽŸ</span><b>KL255551</b></div>
+<div class="t" onclick="T(this,'KL444561')" data-n="KL444561"><span>ðŸŽŸ</span><b>KL444561</b></div>
+<div class="t" onclick="T(this,'KL258096')" data-n="KL258096"><span>ðŸŽŸ</span><b>KL258096</b></div>
+<div class="t" onclick="T(this,'KL188881')" data-n="KL188881"><span>ðŸŽŸ</span><b>KL188881</b></div>
+<div class="t" onclick="T(this,'KL987359')" data-n="KL987359"><span>ðŸŽŸ</span><b>KL987359</b></div>
+<div class="t" onclick="T(this,'KL636747')" data-n="KL636747"><span>ðŸŽŸ</span><b>KL636747</b></div>
+<div class="t" onclick="T(this,'KL765954')" data-n="KL765954"><span>ðŸŽŸ</span><b>KL765954</b></div>
+<div class="t" onclick="T(this,'KL979688')" data-n="KL979688"><span>ðŸŽŸ</span><b>KL979688</b></div>
+<div class="t" onclick="T(this,'KL233322')" data-n="KL233322"><span>ðŸŽŸ</span><b>KL233322</b></div>
+<div class="t" onclick="T(this,'KL578636')" data-n="KL578636"><span>ðŸŽŸ</span><b>KL578636</b></div>
+<div class="t" onclick="T(this,'KL958772')" data-n="KL958772"><span>ðŸŽŸ</span><b>KL958772</b></div>
+<div class="t" onclick="T(this,'KL737384')" data-n="KL737384"><span>ðŸŽŸ</span><b>KL737384</b></div>
+<div class="t" onclick="T(this,'KL666683')" data-n="KL666683"><span>ðŸŽŸ</span><b>KL666683</b></div>
+<div class="t" onclick="T(this,'KL870684')" data-n="KL870684"><span>ðŸŽŸ</span><b>KL870684</b></div>
+<div class="t" onclick="T(this,'KL505881')" data-n="KL505881"><span>ðŸŽŸ</span><b>KL505881</b></div>
+<div class="t" onclick="T(this,'KL939485')" data-n="KL939485"><span>ðŸŽŸ</span><b>KL939485</b></div>
+<div class="t" onclick="T(this,'KL333999')" data-n="KL333999"><span>ðŸŽŸ</span><b>KL333999</b></div>
+<div class="t" onclick="T(this,'KL754367')" data-n="KL754367"><span>ðŸŽŸ</span><b>KL754367</b></div>
+<div class="t" onclick="T(this,'KL363679')" data-n="KL363679"><span>ðŸŽŸ</span><b>KL363679</b></div>
+<div class="t" onclick="T(this,'KL648299')" data-n="KL648299"><span>ðŸŽŸ</span><b>KL648299</b></div>
+<div class="t" onclick="T(this,'KL277712')" data-n="KL277712"><span>ðŸŽŸ</span><b>KL277712</b></div>
+<div class="t" onclick="T(this,'KL786786')" data-n="KL786786"><span>ðŸŽŸ</span><b>KL786786</b></div>
+<div class="t" onclick="T(this,'KL332786')" data-n="KL332786"><span>ðŸŽŸ</span><b>KL332786</b></div>
+<div class="t" onclick="T(this,'KL978584')" data-n="KL978584"><span>ðŸŽŸ</span><b>KL978584</b></div>
+<div class="t" onclick="T(this,'KL746638')" data-n="KL746638"><span>ðŸŽŸ</span><b>KL746638</b></div>
+<div class="t" onclick="T(this,'KL633773')" data-n="KL633773"><span>ðŸŽŸ</span><b>KL633773</b></div>
+<div class="t" onclick="T(this,'KL786000')" data-n="KL786000"><span>ðŸŽŸ</span><b>KL786000</b></div>
+<div class="t" onclick="T(this,'KL655788')" data-n="KL655788"><span>ðŸŽŸ</span><b>KL655788</b></div>
+<div class="t" onclick="T(this,'KL356468')" data-n="KL356468"><span>ðŸŽŸ</span><b>KL356468</b></div>
+<div class="t" onclick="T(this,'KL374781')" data-n="KL374781"><span>ðŸŽŸ</span><b>KL374781</b></div>
+<div class="t" onclick="T(this,'KL453876')" data-n="KL453876"><span>ðŸŽŸ</span><b>KL453876</b></div>
+<div class="t" onclick="T(this,'KL897654')" data-n="KL897654"><span>ðŸŽŸ</span><b>KL897654</b></div>
+<div class="t" onclick="T(this,'KL566277')" data-n="KL566277"><span>ðŸŽŸ</span><b>KL566277</b></div>
+<div class="t" onclick="T(this,'KL275885')" data-n="KL275885"><span>ðŸŽŸ</span><b>KL275885</b></div>
+<div class="t" onclick="T(this,'KL900900')" data-n="KL900900"><span>ðŸŽŸ</span><b>KL900900</b></div>
+<div class="t" onclick="T(this,'KL458365')" data-n="KL458365"><span>ðŸŽŸ</span><b>KL458365</b></div>
+<div class="t" onclick="T(this,'KL090909')" data-n="KL090909"><span>ðŸŽŸ</span><b>KL090909</b></div>
+<div class="t" onclick="T(this,'KL966835')" data-n="KL966835"><span>ðŸŽŸ</span><b>KL966835</b></div>
+<div class="t" onclick="T(this,'KL657883')" data-n="KL657883"><span>ðŸŽŸ</span><b>KL657883</b></div>
+<div class="t" onclick="T(this,'KL273781')" data-n="KL273781"><span>ðŸŽŸ</span><b>KL273781</b></div>
+<div class="t" onclick="T(this,'KL936491')" data-n="KL936491"><span>ðŸŽŸ</span><b>KL936491</b></div>
+<div class="t" onclick="T(this,'KL980897')" data-n="KL980897"><span>ðŸŽŸ</span><b>KL980897</b></div>
+<div class="t" onclick="T(this,'KL717267')" data-n="KL717267"><span>ðŸŽŸ</span><b>KL717267</b></div>
+<div class="t" onclick="T(this,'KL587378')" data-n="KL587378"><span>ðŸŽŸ</span><b>KL587378</b></div>
+<div class="t" onclick="T(this,'KL235678')" data-n="KL235678"><span>ðŸŽŸ</span><b>KL235678</b></div>
+<div class="t" onclick="T(this,'KL980768')" data-n="KL980768"><span>ðŸŽŸ</span><b>KL980768</b></div>
+<div class="t" onclick="T(this,'KL825436')" data-n="KL825436"><span>ðŸŽŸ</span><b>KL825436</b></div>
+<div class="t" onclick="T(this,'KL626628')" data-n="KL626628"><span>ðŸŽŸ</span><b>KL626628</b></div>
+<div class="t" onclick="T(this,'KL589357')" data-n="KL589357"><span>ðŸŽŸ</span><b>KL589357</b></div>
+<div class="t" onclick="T(this,'KL896655')" data-n="KL896655"><span>ðŸŽŸ</span><b>KL896655</b></div>
+<div class="t" onclick="T(this,'KL652387')" data-n="KL652387"><span>ðŸŽŸ</span><b>KL652387</b></div>
+<div class="t" onclick="T(this,'KL132547')" data-n="KL132547"><span>ðŸŽŸ</span><b>KL132547</b></div>
+<div class="t" onclick="T(this,'KL827888')" data-n="KL827888"><span>ðŸŽŸ</span><b>KL827888</b></div>
+<div class="t" onclick="T(this,'KL919395')" data-n="KL919395"><span>ðŸŽŸ</span><b>KL919395</b></div>
+<div class="t" onclick="T(this,'KL569935')" data-n="KL569935"><span>ðŸŽŸ</span><b>KL569935</b></div>
+<div class="t" onclick="T(this,'KL650365')" data-n="KL650365"><span>ðŸŽŸ</span><b>KL650365</b></div>
+<div class="t" onclick="T(this,'KL897265')" data-n="KL897265"><span>ðŸŽŸ</span><b>KL897265</b></div>
+<div class="t" onclick="T(this,'KL233232')" data-n="KL233232"><span>ðŸŽŸ</span><b>KL233232</b></div>
+<div class="t" onclick="T(this,'KL567294')" data-n="KL567294"><span>ðŸŽŸ</span><b>KL567294</b></div>
+<div class="t" onclick="T(this,'KL116541')" data-n="KL116541"><span>ðŸŽŸ</span><b>KL116541</b></div>
+<div class="t" onclick="T(this,'KL987004')" data-n="KL987004"><span>ðŸŽŸ</span><b>KL987004</b></div>
+<div class="t" onclick="T(this,'KL789243')" data-n="KL789243"><span>ðŸŽŸ</span><b>KL789243</b></div>
+<div class="t" onclick="T(this,'KL997645')" data-n="KL997645"><span>ðŸŽŸ</span><b>KL997645</b></div>
+<div class="t" onclick="T(this,'KL892781')" data-n="KL892781"><span>ðŸŽŸ</span><b>KL892781</b></div>
+<div class="t" onclick="T(this,'KL911991')" data-n="KL911991"><span>ðŸŽŸ</span><b>KL911991</b></div>
+<div class="t" onclick="T(this,'KL007001')" data-n="KL007001"><span>ðŸŽŸ</span><b>KL007001</b></div>
+<div class="t" onclick="T(this,'KL852375')" data-n="KL852375"><span>ðŸŽŸ</span><b>KL852375</b></div>
+<div class="t" onclick="T(this,'KL978891')" data-n="KL978891"><span>ðŸŽŸ</span><b>KL978891</b></div>
+<div class="t" onclick="T(this,'KL562653')" data-n="KL562653"><span>ðŸŽŸ</span><b>KL562653</b></div>
+<div class="t" onclick="T(this,'KL451231')" data-n="KL451231"><span>ðŸŽŸ</span><b>KL451231</b></div>
+<div class="t" onclick="T(this,'KL900800')" data-n="KL900800"><span>ðŸŽŸ</span><b>KL900800</b></div>
+<div class="t" onclick="T(this,'KL638332')" data-n="KL638332"><span>ðŸŽŸ</span><b>KL638332</b></div>
+<div class="t" onclick="T(this,'KL616785')" data-n="KL616785"><span>ðŸŽŸ</span><b>KL616785</b></div>
+<div class="t" onclick="T(this,'KL786858')" data-n="KL786858"><span>ðŸŽŸ</span><b>KL786858</b></div>
+<div class="t" onclick="T(this,'KL589986')" data-n="KL589986"><span>ðŸŽŸ</span><b>KL589986</b></div>
+<div class="t" onclick="T(this,'KL536731')" data-n="KL536731"><span>ðŸŽŸ</span><b>KL536731</b></div>
+<div class="t" onclick="T(this,'KL620128')" data-n="KL620128"><span>ðŸŽŸ</span><b>KL620128</b></div>
+<div class="t" onclick="T(this,'KL727782')" data-n="KL727782"><span>ðŸŽŸ</span><b>KL727782</b></div>
+<div class="t" onclick="T(this,'KL885588')" data-n="KL885588"><span>ðŸŽŸ</span><b>KL885588</b></div>
+<div class="t" onclick="T(this,'KL256783')" data-n="KL256783"><span>ðŸŽŸ</span><b>KL256783</b></div>
+<div class="t" onclick="T(this,'KL526579')" data-n="KL526579"><span>ðŸŽŸ</span><b>KL526579</b></div>
+<div class="t" onclick="T(this,'KL132543')" data-n="KL132543"><span>ðŸŽŸ</span><b>KL132543</b></div>
+<div class="t" onclick="T(this,'KL676757')" data-n="KL676757"><span>ðŸŽŸ</span><b>KL676757</b></div>
+<div class="t" onclick="T(this,'KL345112')" data-n="KL345112"><span>ðŸŽŸ</span><b>KL345112</b></div>
+<div class="t" onclick="T(this,'KL563338')" data-n="KL563338"><span>ðŸŽŸ</span><b>KL563338</b></div>
+<div class="t" onclick="T(this,'KL675532')" data-n="KL675532"><span>ðŸŽŸ</span><b>KL675532</b></div>
+<div class="t" onclick="T(this,'KL878976')" data-n="KL878976"><span>ðŸŽŸ</span><b>KL878976</b></div>
+<div class="t" onclick="T(this,'KL265354')" data-n="KL265354"><span>ðŸŽŸ</span><b>KL265354</b></div>
+<div class="t" onclick="T(this,'KL225443')" data-n="KL225443"><span>ðŸŽŸ</span><b>KL225443</b></div>
+<div class="t" onclick="T(this,'KL652211')" data-n="KL652211"><span>ðŸŽŸ</span><b>KL652211</b></div>
+<div class="t" onclick="T(this,'KL567822')" data-n="KL567822"><span>ðŸŽŸ</span><b>KL567822</b></div>
+<div class="t" onclick="T(this,'KL342576')" data-n="KL342576"><span>ðŸŽŸ</span><b>KL342576</b></div>
+<div class="t" onclick="T(this,'KL564682')" data-n="KL564682"><span>ðŸŽŸ</span><b>KL564682</b></div>
+<div class="t" onclick="T(this,'KL995533')" data-n="KL995533"><span>ðŸŽŸ</span><b>KL995533</b></div>
+<div class="t" onclick="T(this,'KL788988')" data-n="KL788988"><span>ðŸŽŸ</span><b>KL788988</b></div>
+<div class="t" onclick="T(this,'KL638941')" data-n="KL638941"><span>ðŸŽŸ</span><b>KL638941</b></div>
+<div class="t" onclick="T(this,'KL872731')" data-n="KL872731"><span>ðŸŽŸ</span><b>KL872731</b></div>
+<div class="t" onclick="T(this,'KL646889')" data-n="KL646889"><span>ðŸŽŸ</span><b>KL646889</b></div>
+<div class="t" onclick="T(this,'KL345543')" data-n="KL345543"><span>ðŸŽŸ</span><b>KL345543</b></div>
+<div class="t" onclick="T(this,'KL100010')" data-n="KL100010"><span>ðŸŽŸ</span><b>KL100010</b></div>
+<div class="t" onclick="T(this,'KL734617')" data-n="KL734617"><span>ðŸŽŸ</span><b>KL734617</b></div>
+<div class="t" onclick="T(this,'KL657783')" data-n="KL657783"><span>ðŸŽŸ</span><b>KL657783</b></div>
+<div class="t" onclick="T(this,'KL786555')" data-n="KL786555"><span>ðŸŽŸ</span><b>KL786555</b></div>
+<div class="t" onclick="T(this,'KL450092')" data-n="KL450092"><span>ðŸŽŸ</span><b>KL450092</b></div>
+<div class="t" onclick="T(this,'KL828192')" data-n="KL828192"><span>ðŸŽŸ</span><b>KL828192</b></div>
+<div class="t" onclick="T(this,'KL828399')" data-n="KL828399"><span>ðŸŽŸ</span><b>KL828399</b></div>
+<div class="t" onclick="T(this,'KL777786')" data-n="KL777786"><span>ðŸŽŸ</span><b>KL777786</b></div>
+<div class="t" onclick="T(this,'KL986876')" data-n="KL986876"><span>ðŸŽŸ</span><b>KL986876</b></div>
+<div class="t" onclick="T(this,'KL172839')" data-n="KL172839"><span>ðŸŽŸ</span><b>KL172839</b></div>
+<div class="t" onclick="T(this,'KL622381')" data-n="KL622381"><span>ðŸŽŸ</span><b>KL622381</b></div>
+<div class="t" onclick="T(this,'KL627373')" data-n="KL627373"><span>ðŸŽŸ</span><b>KL627373</b></div>
+<div class="t" onclick="T(this,'KL777555')" data-n="KL777555"><span>ðŸŽŸ</span><b>KL777555</b></div>
+<div class="t" onclick="T(this,'KL386386')" data-n="KL386386"><span>ðŸŽŸ</span><b>KL386386</b></div>
+<div class="t" onclick="T(this,'KL987645')" data-n="KL987645"><span>ðŸŽŸ</span><b>KL987645</b></div>
+<div class="t" onclick="T(this,'KL376133')" data-n="KL376133"><span>ðŸŽŸ</span><b>KL376133</b></div>
+<div class="t" onclick="T(this,'KL666762')" data-n="KL666762"><span>ðŸŽŸ</span><b>KL666762</b></div>
+<div class="t" onclick="T(this,'KL999111')" data-n="KL999111"><span>ðŸŽŸ</span><b>KL999111</b></div>
+<div class="t" onclick="T(this,'KL186286')" data-n="KL186286"><span>ðŸŽŸ</span><b>KL186286</b></div>
+<div class="t" onclick="T(this,'KL322223')" data-n="KL322223"><span>ðŸŽŸ</span><b>KL322223</b></div>
+<div class="t" onclick="T(this,'KL738481')" data-n="KL738481"><span>ðŸŽŸ</span><b>KL738481</b></div>
+
+<div class="t" onclick="T(this,'KL757899')" data-n="KL757899"><span>ðŸŽŸ</span><b>KL757899</b></div>
+<div class="t" onclick="T(this,'KL432678')" data-n="KL432678"><span>ðŸŽŸ</span><b>KL432678</b></div>
+<div class="t" onclick="T(this,'KL768286')" data-n="KL768286"><span>ðŸŽŸ</span><b>KL768286</b></div>
+<div class="t" onclick="T(this,'KL366366')" data-n="KL366366"><span>ðŸŽŸ</span><b>KL366366</b></div>
+<div class="t" onclick="T(this,'KL828371')" data-n="KL828371"><span>ðŸŽŸ</span><b>KL828371</b></div>
+<div class="t" onclick="T(this,'KL727281')" data-n="KL727281"><span>ðŸŽŸ</span><b>KL727281</b></div>
+<div class="t" onclick="T(this,'KL545632')" data-n="KL545632"><span>ðŸŽŸ</span><b>KL545632</b></div>
+<div class="t" onclick="T(this,'KL586586')" data-n="KL586586"><span>ðŸŽŸ</span><b>KL586586</b></div>
+<div class="t" onclick="T(this,'KL100001')" data-n="KL100001"><span>ðŸŽŸ</span><b>KL100001</b></div>
+<div class="t" onclick="T(this,'KL987801')" data-n="KL987801"><span>ðŸŽŸ</span><b>KL987801</b></div>
+<div class="t" onclick="T(this,'KL987802')" data-n="KL987802"><span>ðŸŽŸ</span><b>KL987802</b></div>
+<div class="t" onclick="T(this,'KL987803')" data-n="KL987803"><span>ðŸŽŸ</span><b>KL987803</b></div>
+<div class="t" onclick="T(this,'KL987804')" data-n="KL987804"><span>ðŸŽŸ</span><b>KL987804</b></div>
+<div class="t" onclick="T(this,'KL987805')" data-n="KL987805"><span>ðŸŽŸ</span><b>KL987805</b></div>
+<div class="t" onclick="T(this,'KL987806')" data-n="KL987806"><span>ðŸŽŸ</span><b>KL987806</b></div>
+<div class="t" onclick="T(this,'KL987807')" data-n="KL987807"><span>ðŸŽŸ</span><b>KL987807</b></div>
+<div class="t" onclick="T(this,'KL987808')" data-n="KL987808"><span>ðŸŽŸ</span><b>KL987808</b></div>
+<div class="t" onclick="T(this,'KL987809')" data-n="KL987809"><span>ðŸŽŸ</span><b>KL987809</b></div>
+<div class="t" onclick="T(this,'KL987810')" data-n="KL987810"><span>ðŸŽŸ</span><b>KL987810</b></div>
+<div class="t" onclick="T(this,'KL987811')" data-n="KL987811"><span>ðŸŽŸ</span><b>KL987811</b></div>
+<div class="t" onclick="T(this,'KL987812')" data-n="KL987812"><span>ðŸŽŸ</span><b>KL987812</b></div>
+<div class="t" onclick="T(this,'KL987813')" data-n="KL987813"><span>ðŸŽŸ</span><b>KL987813</b></div>
+<div class="t" onclick="T(this,'KL987814')" data-n="KL987814"><span>ðŸŽŸ</span><b>KL987814</b></div>
+<div class="t" onclick="T(this,'KL987815')" data-n="KL987815"><span>ðŸŽŸ</span><b>KL987815</b></div>
+<div class="t" onclick="T(this,'KL987816')" data-n="KL987816"><span>ðŸŽŸ</span><b>KL987816</b></div>
+<div class="t" onclick="T(this,'KL987817')" data-n="KL987817"><span>ðŸŽŸ</span><b>KL987817</b></div>
+<div class="t" onclick="T(this,'KL987818')" data-n="KL987818"><span>ðŸŽŸ</span><b>KL987818</b></div>
+<div class="t" onclick="T(this,'KL987819')" data-n="KL987819"><span>ðŸŽŸ</span><b>KL987819</b></div>
+<div class="t" onclick="T(this,'KL987820')" data-n="KL987820"><span>ðŸŽŸ</span><b>KL987820</b></div>
+<div class="t" onclick="T(this,'KL987821')" data-n="KL987821"><span>ðŸŽŸ</span><b>KL987821</b></div>
+<div class="t" onclick="T(this,'KL987822')" data-n="KL987822"><span>ðŸŽŸ</span><b>KL987822</b></div>
+<div class="t" onclick="T(this,'KL987823')" data-n="KL987823"><span>ðŸŽŸ</span><b>KL987823</b></div>
+<div class="t" onclick="T(this,'KL987824')" data-n="KL987824"><span>ðŸŽŸ</span><b>KL987824</b></div>
+<div class="t" onclick="T(this,'KL987825')" data-n="KL987825"><span>ðŸŽŸ</span><b>KL987825</b></div>
+<div class="t" onclick="T(this,'KL987826')" data-n="KL987826"><span>ðŸŽŸ</span><b>KL987826</b></div>
+<div class="t" onclick="T(this,'KL987827')" data-n="KL987827"><span>ðŸŽŸ</span><b>KL987827</b></div>
+<div class="t" onclick="T(this,'KL987828')" data-n="KL987828"><span>ðŸŽŸ</span><b>KL987828</b></div>
+<div class="t" onclick="T(this,'KL987829')" data-n="KL987829"><span>ðŸŽŸ</span><b>KL987829</b></div>
+<div class="t" onclick="T(this,'KL987830')" data-n="KL987830"><span>ðŸŽŸ</span><b>KL987830</b></div>
+<div class="t" onclick="T(this,'KL987831')" data-n="KL987831"><span>ðŸŽŸ</span><b>KL987831</b></div>
+<div class="t" onclick="T(this,'KL987832')" data-n="KL987832"><span>ðŸŽŸ</span><b>KL987832</b></div>
+<div class="t" onclick="T(this,'KL987833')" data-n="KL987833"><span>ðŸŽŸ</span><b>KL987833</b></div>
+<div class="t" onclick="T(this,'KL987834')" data-n="KL987834"><span>ðŸŽŸ</span><b>KL987834</b></div>
+<div class="t" onclick="T(this,'KL987835')" data-n="KL987835"><span>ðŸŽŸ</span><b>KL987835</b></div>
+<div class="t" onclick="T(this,'KL987836')" data-n="KL987836"><span>ðŸŽŸ</span><b>KL987836</b></div>
+<div class="t" onclick="T(this,'KL987837')" data-n="KL987837"><span>ðŸŽŸ</span><b>KL987837</b></div>
+<div class="t" onclick="T(this,'KL987838')" data-n="KL987838"><span>ðŸŽŸ</span><b>KL987838</b></div>
+<div class="t" onclick="T(this,'KL987839')" data-n="KL987839"><span>ðŸŽŸ</span><b>KL987839</b></div>
+<div class="t" onclick="T(this,'KL987840')" data-n="KL987840"><span>ðŸŽŸ</span><b>KL987840</b></div>
+<div class="t" onclick="T(this,'KL987841')" data-n="KL987841"><span>ðŸŽŸ</span><b>KL987841</b></div>
+<div class="t" onclick="T(this,'KL987842')" data-n="KL987842"><span>ðŸŽŸ</span><b>KL987842</b></div>
+<div class="t" onclick="T(this,'KL987843')" data-n="KL987843"><span>ðŸŽŸ</span><b>KL987843</b></div>
+<div class="t" onclick="T(this,'KL987844')" data-n="KL987844"><span>ðŸŽŸ</span><b>KL987844</b></div>
+<div class="t" onclick="T(this,'KL987845')" data-n="KL987845"><span>ðŸŽŸ</span><b>KL987845</b></div>
+<div class="t" onclick="T(this,'KL987846')" data-n="KL987846"><span>ðŸŽŸ</span><b>KL987846</b></div>
+<div class="t" onclick="T(this,'KL987847')" data-n="KL987847"><span>ðŸŽŸ</span><b>KL987847</b></div>
+<div class="t" onclick="T(this,'KL987848')" data-n="KL987848"><span>ðŸŽŸ</span><b>KL987848</b></div>
+<div class="t" onclick="T(this,'KL987849')" data-n="KL987849"><span>ðŸŽŸ</span><b>KL987849</b></div>
+<div class="t" onclick="T(this,'KL987850')" data-n="KL987850"><span>ðŸŽŸ</span><b>KL987850</b></div>
+<div class="t" onclick="T(this,'KL987851')" data-n="KL987851"><span>ðŸŽŸ</span><b>KL987851</b></div>
+<div class="t" onclick="T(this,'KL987852')" data-n="KL987852"><span>ðŸŽŸ</span><b>KL987852</b></div>
+<div class="t" onclick="T(this,'KL987853')" data-n="KL987853"><span>ðŸŽŸ</span><b>KL987853</b></div>
+<div class="t" onclick="T(this,'KL987854')" data-n="KL987854"><span>ðŸŽŸ</span><b>KL987854</b></div>
+<div class="t" onclick="T(this,'KL987855')" data-n="KL987855"><span>ðŸŽŸ</span><b>KL987855</b></div>
+<div class="t" onclick="T(this,'KL987856')" data-n="KL987856"><span>ðŸŽŸ</span><b>KL987856</b></div>
+<div class="t" onclick="T(this,'KL987857')" data-n="KL987857"><span>ðŸŽŸ</span><b>KL987857</b></div>
+<div class="t" onclick="T(this,'KL987858')" data-n="KL987858"><span>ðŸŽŸ</span><b>KL987858</b></div>
+<div class="t" onclick="T(this,'KL987859')" data-n="KL987859"><span>ðŸŽŸ</span><b>KL987859</b></div>
+<div class="t" onclick="T(this,'KL987860')" data-n="KL987860"><span>ðŸŽŸ</span><b>KL987860</b></div>
+<div class="t" onclick="T(this,'KL987861')" data-n="KL987861"><span>ðŸŽŸ</span><b>KL987861</b></div>
+<div class="t" onclick="T(this,'KL987862')" data-n="KL987862"><span>ðŸŽŸ</span><b>KL987862</b></div>
+<div class="t" onclick="T(this,'KL987863')" data-n="KL987863"><span>ðŸŽŸ</span><b>KL987863</b></div>
+<div class="t" onclick="T(this,'KL987864')" data-n="KL987864"><span>ðŸŽŸ</span><b>KL987864</b></div>
+<div class="t" onclick="T(this,'KL987865')" data-n="KL987865"><span>ðŸŽŸ</span><b>KL987865</b></div>
+<div class="t" onclick="T(this,'KL987866')" data-n="KL987866"><span>ðŸŽŸ</span><b>KL987866</b></div>
+<div class="t" onclick="T(this,'KL987867')" data-n="KL987867"><span>ðŸŽŸ</span><b>KL987867</b></div>
+<div class="t" onclick="T(this,'KL987868')" data-n="KL987868"><span>ðŸŽŸ</span><b>KL987868</b></div>
+<div class="t" onclick="T(this,'KL987869')" data-n="KL987869"><span>ðŸŽŸ</span><b>KL987869</b></div>
+<div class="t" onclick="T(this,'KL987870')" data-n="KL987870"><span>ðŸŽŸ</span><b>KL987870</b></div>
+<div class="t" onclick="T(this,'KL987871')" data-n="KL987871"><span>ðŸŽŸ</span><b>KL987871</b></div>
+<div class="t" onclick="T(this,'KL987872')" data-n="KL987872"><span>ðŸŽŸ</span><b>KL987872</b></div>
+<div class="t" onclick="T(this,'KL987873')" data-n="KL987873"><span>ðŸŽŸ</span><b>KL987873</b></div>
+<div class="t" onclick="T(this,'KL987874')" data-n="KL987874"><span>ðŸŽŸ</span><b>KL987874</b></div>
+<div class="t" onclick="T(this,'KL987875')" data-n="KL987875"><span>ðŸŽŸ</span><b>KL987875</b></div>
+<div class="t" onclick="T(this,'KL987876')" data-n="KL987876"><span>ðŸŽŸ</span><b>KL987876</b></div>
+<div class="t" onclick="T(this,'KL987877')" data-n="KL987877"><span>ðŸŽŸ</span><b>KL987877</b></div>
+<div class="t" onclick="T(this,'KL987878')" data-n="KL987878"><span>ðŸŽŸ</span><b>KL987878</b></div>
+<div class="t" onclick="T(this,'KL987879')" data-n="KL987879"><span>ðŸŽŸ</span><b>KL987879</b></div>
+<div class="t" onclick="T(this,'KL987880')" data-n="KL987880"><span>ðŸŽŸ</span><b>KL987880</b></div>
+<div class="t" onclick="T(this,'KL987881')" data-n="KL987881"><span>ðŸŽŸ</span><b>KL987881</b></div>
+<div class="t" onclick="T(this,'KL987882')" data-n="KL987882"><span>ðŸŽŸ</span><b>KL987882</b></div>
+<div class="t" onclick="T(this,'KL987883')" data-n="KL987883"><span>ðŸŽŸ</span><b>KL987883</b></div>
+<div class="t" onclick="T(this,'KL987884')" data-n="KL987884"><span>ðŸŽŸ</span><b>KL987884</b></div>
+<div class="t" onclick="T(this,'KL987885')" data-n="KL987885"><span>ðŸŽŸ</span><b>KL987885</b></div>
+<div class="t" onclick="T(this,'KL987886')" data-n="KL987886"><span>ðŸŽŸ</span><b>KL987886</b></div>
+<div class="t" onclick="T(this,'KL987887')" data-n="KL987887"><span>ðŸŽŸ</span><b>KL987887</b></div>
+<div class="t" onclick="T(this,'KL987888')" data-n="KL987888"><span>ðŸŽŸ</span><b>KL987888</b></div>
+<div class="t" onclick="T(this,'KL987889')" data-n="KL987889"><span>ðŸŽŸ</span><b>KL987889</b></div>
+<div class="t" onclick="T(this,'KL987890')" data-n="KL987890"><span>ðŸŽŸ</span><b>KL987890</b></div>
+<div class="t" onclick="T(this,'KL987891')" data-n="KL987891"><span>ðŸŽŸ</span><b>KL987891</b></div>
+<div class="t" onclick="T(this,'KL987892')" data-n="KL987892"><span>ðŸŽŸ</span><b>KL987892</b></div>
+<div class="t" onclick="T(this,'KL987893')" data-n="KL987893"><span>ðŸŽŸ</span><b>KL987893</b></div>
+<div class="t" onclick="T(this,'KL987894')" data-n="KL987894"><span>ðŸŽŸ</span><b>KL987894</b></div>
+<div class="t" onclick="T(this,'KL987895')" data-n="KL987895"><span>ðŸŽŸ</span><b>KL987895</b></div>
+<div class="t" onclick="T(this,'KL987896')" data-n="KL987896"><span>ðŸŽŸ</span><b>KL987896</b></div>
+<div class="t" onclick="T(this,'KL987897')" data-n="KL987897"><span>ðŸŽŸ</span><b>KL987897</b></div>
+<div class="t" onclick="T(this,'KL987898')" data-n="KL987898"><span>ðŸŽŸ</span><b>KL987898</b></div>
+<div class="t" onclick="T(this,'KL987899')" data-n="KL987899"><span>ðŸŽŸ</span><b>KL987899</b></div>
+<div class="t" onclick="T(this,'KL987999')" data-n="KL987999"><span>ðŸŽŸ</span><b>KL987999</b></div>
+<div class="t" onclick="T(this,'KL987100')" data-n="KL987100"><span>ðŸŽŸ</span><b>KL987100</b></div>
+<div class="t" onclick="T(this,'KL987101')" data-n="KL987101"><span>ðŸŽŸ</span><b>KL987101</b></div>
+<div class="t" onclick="T(this,'KL987102')" data-n="KL987102"><span>ðŸŽŸ</span><b>KL987102</b></div>
+<div class="t" onclick="T(this,'KL987103')" data-n="KL987103"><span>ðŸŽŸ</span><b>KL987103</b></div>
+<div class="t" onclick="T(this,'KL987104')" data-n="KL987104"><span>ðŸŽŸ</span><b>KL987104</b></div>
+<div class="t" onclick="T(this,'KL987105')" data-n="KL987105"><span>ðŸŽŸ</span><b>KL987105</b></div>
+<div class="t" onclick="T(this,'KL987106')" data-n="KL987106"><span>ðŸŽŸ</span><b>KL987106</b></div>
+<div class="t" onclick="T(this,'KL987107')" data-n="KL987107"><span>ðŸŽŸ</span><b>KL987107</b></div>
+<div class="t" onclick="T(this,'KL987108')" data-n="KL987108"><span>ðŸŽŸ</span><b>KL987108</b></div>
+<div class="t" onclick="T(this,'KL987109')" data-n="KL987109"><span>ðŸŽŸ</span><b>KL987109</b></div>
+<div class="t" onclick="T(this,'KL987110')" data-n="KL987110"><span>ðŸŽŸ</span><b>KL987110</b></div>
+<div class="t" onclick="T(this,'KL987111')" data-n="KL987111"><span>ðŸŽŸ</span><b>KL987111</b></div>
+<div class="t" onclick="T(this,'KL987112')" data-n="KL987112"><span>ðŸŽŸ</span><b>KL987112</b></div>
+<div class="t" onclick="T(this,'KL987113')" data-n="KL987113"><span>ðŸŽŸ</span><b>KL987113</b></div>
+<div class="t" onclick="T(this,'KL987114')" data-n="KL987114"><span>ðŸŽŸ</span><b>KL987114</b></div>
+<div class="t" onclick="T(this,'KL987115')" data-n="KL987115"><span>ðŸŽŸ</span><b>KL987115</b></div>
+<div class="t" onclick="T(this,'KL987116')" data-n="KL987116"><span>ðŸŽŸ</span><b>KL987116</b></div>
+<div class="t" onclick="T(this,'KL987117')" data-n="KL987117"><span>ðŸŽŸ</span><b>KL987117</b></div>
+<div class="t" onclick="T(this,'KL987118')" data-n="KL987118"><span>ðŸŽŸ</span><b>KL987118</b></div>
+<div class="t" onclick="T(this,'KL987119')" data-n="KL987119"><span>ðŸŽŸ</span><b>KL987119</b></div>
+<div class="t" onclick="T(this,'KL987120')" data-n="KL987120"><span>ðŸŽŸ</span><b>KL987120</b></div>
+<div class="t" onclick="T(this,'KL987121')" data-n="KL987121"><span>ðŸŽŸ</span><b>KL987121</b></div>
+<div class="t" onclick="T(this,'KL987122')" data-n="KL987122"><span>ðŸŽŸ</span><b>KL987122</b></div>  </div>
+  <div class="ch" id="ch"></div>
+  <div class="mw" id="mw">âš ï¸ Minimum 3 Tickets select karna zaroori hai!</div>
+</div>
+<div class="sm">
+  <div class="sr"><span class="lb">Selected Tickets</span><span class="vl" id="cd">0</span></div>
+  <div class="sr"><span class="lb">Price per Ticket</span><span class="vl">â‚¹40</span></div>
+  <div class="sr tot"><span class="lb">ðŸ’µ Total Amount</span><span class="vl" id="td">â‚¹0</span></div>
+</div>
+<button class="bw" onclick="WA()"><span style="font-size:21px">ðŸ“²</span>WHATSAPP PAR BOOK KAREIN</button>
+<div class="ts">
+  <div class="tb2">ðŸ”’ Secure</div>
+  <div class="tb2">âœ… Official</div>
+  <div class="tb2">âš¡ Instant</div>
+</div>
+<div class="dv"></div>
+<div class="py">
+  <div class="pyl">ðŸ”’ Secure Payment via</div>
+  <div class="pyi">
+    <div class="pc">ðŸ“± GPay</div>
+    <div class="pc">ðŸ“² PhonePe</div>
+    <div class="pc">ðŸ’³ Paytm</div>
+  </div>
+</div>
+<div class="nt">âš ï¸ <strong>Note:</strong> Minimum 3 Tickets compulsory. Sirf VIP tickets available. Limited time offer.</div>
+<div class="ft">Â© 2026 Kerala State Lotteries Department Â· All rights reserved</div>
+</div>
 <script>
-const ALL_TICKETS = [
-  "KL058198","KL457432","KL074526","KL208982","KL992875","KL145584","KL289040","KL415540","KL379713","KL808624",
-  "KL672490","KL829629","KL678491","KL611324","KL173795","KL140845","KL161986","KL697871","KL169021","KL623875",
-  "KL946454","KL517803","KL723948","KL533445","KL774894","KL335231","KL716666","KL876489","KL357894","KL081341",
-  "KL949742","KL526945","KL405006","KL828512","KL816289","KL510435","KL700045","KL074556","KL786965","KL146075",
-  "KL278882","KL169394","KL379099","KL087497","KL728417","KL208596","KL142304","KL152056","KL348301","KL451054",
-  "KL541586","KL516418","KL774678","KL675216","KL773482","KL875215","KL973486","KL055725","KL728021","KL261082",
-  "KL882873","KL786664","KL799385","KL702562","KL809917","KL091308","KL847799","KL828590","KL218925","KL923356",
-  "KL334455","KL237084","KL349493","KL751730","KL815149","KL663220","KL272119","KL780484","KL359495","KL019425",
-  "KL605301","KL774676","KL307495","KL200620","KL234874","KL205622","KL244732","KL614738","KL257036","KL199929",
-  "KL930402","KL304493","KL312264","KL332181","KL951585","KL143259","KL097795","KL986704","KL278891","KL599633",
-  "KL015374","KL872485","KL000373","KL949954","KL619046","KL949951","KL266984","KL234871","KL476506","KL419381",
-  "KL779895","KL528812","KL336582","KL456512","KL467215","KL725925","KL673209","KL248985","KL694204","KL058162",
-  "KL273912","KL055063","KL795629","KL974628","KL971470","KL951580","KL465215","KL250828","KL277772","KL575792",
-  "KL255551","KL444561","KL258096","KL188881","KL987359","KL636747","KL765954","KL979688","KL233322","KL578636",
-  "KL958772","KL737384","KL666683","KL870684","KL505881","KL939485","KL333999","KL754367","KL363679","KL648299",
-  "KL277712","KL786786","KL332786","KL978584","KL746638","KL633773","KL786000","KL655788","KL356468","KL374781",
-  "KL453876","KL897654","KL566277","KL275885","KL900900","KL458365",
+var S={},P=40,MIN=3,WN='919360457290';
+function T(e,n){if(S[n]){delete S[n];e.classList.remove('sel')}else{S[n]=1;e.classList.add('sel');mi(e)}R()}
+function F(){var q=document.getElementById('sx').value.trim().toUpperCase();var ts=document.querySelectorAll('#gd .t');var c=0;for(var i=0;i<ts.length;i++){var n=ts[i].dataset.n;if(!q||n.indexOf(q)!==-1){ts[i].classList.remove('hidden');c++}else{ts[i].classList.add('hidden')}}document.getElementById('bt').textContent='ðŸ“‹ Total: '+c}
+function R(){var k=Object.keys(S);var c=k.length;document.getElementById('cd').textContent=c;document.getElementById('td').textContent='â‚¹'+(c*P).toLocaleString('en-IN');document.getElementById('bs').textContent='âœ… Selected: '+c;document.getElementById('mw').style.display='none';var ch=document.getElementById('ch');ch.innerHTML='';for(var i=0;i<k.length;i++){var n=k[i];ch.innerHTML+='<div class="chip">ðŸŽŸ '+n+' <span class="cx" onclick="RC(''+n+'')">âœ•</span></div>'}}
+function RC(n){delete S[n];var e=document.querySelector('#gd .t[data-n="'+n+'"]');if(e)e.classList.remove('sel');R()}
+var sec=14*60+59;function tk(){if(sec<0)sec=14*60+59;var h=Math.floor(sec/3600),m=Math.floor((sec%3600)/60),s=sec%60;document.getElementById('th').textContent=String(h).padStart(2,'0');document.getElementById('tm').textContent=String(m).padStart(2,'0');document.getElementById('ts').textContent=String(s).padStart(2,'0');sec--}tk();setInterval(tk,1000);
+function WA(){var k=Object.keys(S);if(k.length<MIN){var w=document.getElementById('mw');w.style.display='block';w.style.animation='none';setTimeout(function(){w.style.animation='sk .4s ease'},10);return}CN();var msg=encodeURIComponent('ðŸ† *KERALA LOTTERY BOOKING*\n\nðŸ‘¤ *Agent:* Nikhil Varma\nðŸŽŸï¸ *Tickets ('+k.length+'):*\n'+k.join('\n')+'\n\nðŸ’µ *Total: â‚¹'+(k.length*P).toLocaleString('en-IN')+'*\n\nâš¡ Please confirm!');setTimeout(function(){window.open('https://wa.me/'+WN+'?text='+msg,'_blank')},500)}
+function CN(){var c=document.getElementById('cf');var cols=['#FFD700','#FFA500','#25D366','#e53935','#fff'];for(var i=0;i<60;i++){var p=document.createElement('div');p.className='cp';var w=4+Math.random()*6;p.style.cssText='left:'+(Math.random()*100)+'%;background:'+cols[~~(Math.random()*5)]+';width:'+w+'px;height:'+w+'px;border-radius:'+(Math.random()>.5?'50%':'2px')+';animation:fl '+(1.5+Math.random()*2)+'s '+(Math.random()*.5)+'s linear forwards;';c.appendChild(p);setTimeout(function(x){x.remove()},3200,p)}}
+function mi(el){var r=el.getBoundingClientRect();var cx=r.left+r.width/2,cy=r.top+r.height/2;var c=document.getElementById('cf');for(var i=0;i<7;i++){var p=document.createElement('div');var a=(i/7)*Math.PI*2,d=20+Math.random()*18;p.style.cssText='position:fixed;left:'+cx+'px;top:'+cy+'px;width:5px;height:5px;border-radius:50%;background:#FFD700;pointer-events:none;z-index:9999;transition:all .4s ease-out;opacity:1;';c.appendChild(p);(function(pp,aa,dd){setTimeout(function(){pp.style.transform='translate('+(Math.cos(aa)*dd)+'px,'+(Math.sin(aa)*dd)+'px)';pp.style.opacity='0'},10);setTimeout(function(){pp.remove()},500)})(p,a,d)}}
+</script>
+</body>
+</html>
